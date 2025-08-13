@@ -26,7 +26,11 @@ test('user can query for cs-114-bachelor mustlist', async ({ page, extensionId }
   await page.selectOption('select#stype', { label: '日間學士班' });
   await new Promise(r => setTimeout(r, 1000));
   await page.selectOption('select#majr', { label: '資工系' });
-  await new Promise(r => setTimeout(r, 1000));
+  await page.waitForSelector('select#stype:enabled');
+  await page.selectOption('select#stype', { label: '日間學士班' });
+  await page.waitForSelector('select#majr:enabled');
+  await page.selectOption('select#majr', { label: '資工系' });
+  await page.waitForSelector('select[name="p_grop"].form-control:enabled');
   await page.selectOption('select[name="p_grop"].form-control', { label: '一般組' });
 
   await page.click('button#fetchBtn');
