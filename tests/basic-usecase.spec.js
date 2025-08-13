@@ -22,15 +22,10 @@ test('user can query for cs-114-bachelor mustlist', async ({ page, extensionId }
 
   // Fill in options
   await page.selectOption('select#setyear', { label: '114' });
-  await new Promise(r => setTimeout(r, 1000));
   await page.selectOption('select#stype', { label: '日間學士班' });
-  await new Promise(r => setTimeout(r, 1000));
+  await new Promise(resolve => setTimeout(resolve, 1000));
   await page.selectOption('select#majr', { label: '資工系' });
-  await page.waitForSelector('select#stype:enabled');
-  await page.selectOption('select#stype', { label: '日間學士班' });
-  await page.waitForSelector('select#majr:enabled');
-  await page.selectOption('select#majr', { label: '資工系' });
-  await page.waitForSelector('select[name="p_grop"].form-control:enabled');
+  await new Promise(resolve => setTimeout(resolve, 1000));
   await page.selectOption('select[name="p_grop"].form-control', { label: '一般組' });
 
   await page.click('button#fetchBtn');
