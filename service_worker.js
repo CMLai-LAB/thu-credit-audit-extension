@@ -46,14 +46,39 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return;
       }
 
+      if (message.type === 'LOAD_SUBMAJR_OPTIONS') {
+        const url = new URL(`${BASE}?job=group`);
+        const body = url.searchParams;
+        body.set('ic-request', 'true');
+        body.set('ic-element-id', 'majr');
+        body.set('ic-element-name', 'majr');
+        body.set('ic-id', '3');
+        body.set('ic-target-id', 'submajr');
+        body.set('ic-trigger-id', 'majr');
+        body.set('ic-trigger-name', 'majr');
+        body.set('ic-current-url', '/wwwstud/info/MustList.php');
+        body.set('majr', String(message.payload.majr));
+        body.set('stype', String(message.payload.stype));
+
+        const res = await fetchWithTimeout(url, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const html = await res.text();
+        sendResponse({ ok: true, html });
+        return;
+      }
+
       if (message.type === 'FETCH_MUSTLIST') {
-        const { setyear, stype, majr } = message.payload;
+        const { setyear, stype, majr, subMajr } = message.payload;
         const url = `${BASE}?job=list`;
         const body = new URLSearchParams();
         body.set('ic-request', 'true');
         body.set('setyear', String(setyear));
         body.set('stype', String(stype));
         body.set('majr', String(majr));
+        subMajr && body.set('p_grop', String(subMajr));
         body.set('ic-element-id', 'main');
         body.set('ic-element-name', 'main');
         body.set('ic-id', '1');
