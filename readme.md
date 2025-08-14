@@ -80,3 +80,9 @@
 
 - ✅ 已測試：Chrome 桌面版 115+
 - ⚠️ 若網站 HTML 結構異動，可能需調整 `popup.js` 中的 `parseMustTable` 或 `scrapeTranscriptFromActiveTab` 方法
+- 💻 本專案提供 GitHub Codespaces 開發環境，使用官方 Playwright 映像 `mcr.microsoft.com/playwright:v1.54.0-noble`。進入 Codespace 後會自動執行 `npm ci` 安裝依賴。
+- 🧪 在 Codespace 中可透過以下指令執行測試並開啟報告：
+  ```bash
+  npm test        # 執行 Playwright 測試
+  npm run report  # 開啟測試報告
+  ```
