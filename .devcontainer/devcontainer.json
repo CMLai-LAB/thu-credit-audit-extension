@@ -1,0 +1,11 @@
+{
+  "name": "thu-credit-audit-extension",
+  "image": "mcr.microsoft.com/playwright:v1.54.0-noble",
+  "remoteUser": "pwuser",
+  "postCreateCommand": "npm ci",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-playwright.playwright"]
+    }
+  }
+}
