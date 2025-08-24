@@ -15,7 +15,7 @@
         <p class="subtitle">快速查詢 / 比對學分 & 匯出報告</p>
       </div>
       <div class="header-actions">
-        <button class="icon-btn" id="refreshYearsBtn" title="重新載入學年度" aria-label="重新載入學年度">↻</button>
+        <button class="icon-btn" id="refreshYearsBtn" title="刷新頁面" aria-label="刷新頁面">↻</button>
       </div>
     </header>
 
@@ -56,10 +56,12 @@
 
       <div id="status" class="status" role="status" aria-live="polite"></div>
     </section>
+  </div>
 
-    <section id="rawPanel" class="panel" aria-labelledby="rawTitle" style="margin-top:16px;">
+  <div class="wrap-row">
+    <section id="rawPanel" class="panel" aria-labelledby="rawTitle">
       <div class="panel-head">
-        <h2 id="rawTitle">原始表格</h2>
+        <h2 id="rawTitle">必修科目表</h2>
       </div>
       <iframe id="rawFrame"
               class="raw-frame"
@@ -67,11 +69,11 @@
     </section>
 
     <div id="result" class="result" style="display:none;"></div>
-
+  </div>
     <footer class="footer">
       <small>ⓘ 若比對失敗，請先在原校務系統開啟「歷年成績」頁再重試。</small>
     </footer>
-  </div>
+
 
   <script src="popup.js"></script>
 </body>
